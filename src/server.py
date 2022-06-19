@@ -6,7 +6,14 @@ import re
 
 app = Flask(__name__)
 
-config = dotenv_values(Path('../../.env'))
+try:
+    config = dotenv_values(Path('../../.env'))
+except FileNotFoundError:
+    config = dict(
+        APP_TARGET_PORT=10000,
+        APP_TARGET_URL='localhost'
+    )
+
 
 # static templates for local use
 RETURN_TO_MAIN = f"""
@@ -63,4 +70,4 @@ def index():
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=10000, debug=True)
+    app.run(host=config['APP_TARGET_URL'], port=config['APP_TARGET_PORT'], debug=True)
