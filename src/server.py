@@ -23,7 +23,7 @@ def fizzbuzz(fizbuz: int = 16) -> str:
         """
 
     v = ""
-    for fb in range(fizbuz):
+    for fb in range(1, fizbuz + 1):
         if fb % 3 == 0 and fb % 5 == 0:
             v += "\n\t\t<p>fizzbuzz</p>"
             continue
