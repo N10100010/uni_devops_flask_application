@@ -1,10 +1,16 @@
 
+####################################
+# TEST THE INDEX PAGE's GET RESPONSE
+####################################
 def test_index(test_client):
     response = test_client.get('/')
     assert response.status_code == 200
     assert b'FizzBuzz' in response.data
 
 
+#########################################
+# TEST THE FIZZBUZZ ROUTE's POST RESPONSE
+#########################################
 def test_fizzbuzz_(test_client):
     response = test_client.post('/fizzbuzz', data=dict(fizzbuzz=10))
     assert response.status_code == 200
